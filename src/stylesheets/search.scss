@@ -1,0 +1,45 @@
+@use './variables' as *;
+
+.search-bar {
+  transition: border 300ms;
+  width: max(38.7%, 520px);
+  height: 60px;
+  display: flex;
+  border-radius: 16px;
+  border: 1px solid transparent;
+
+  &.invalid {
+    border: 1px solid $red;
+
+    input {
+      color: $red;
+    }
+  }
+
+  input {
+    transition: color 300ms;
+    width: 90%;
+    height: 100%;
+    border-radius: 16px 0 0 16px;
+    border: 1px solid transparent;
+    padding: 25px;
+    font: inherit;
+    font-size: 18px;
+    color: $black;
+  }
+
+  .submit-button {
+    width: 58px;
+    height: 58px;
+    border: 1px solid transparent;
+    border-radius: 0 16px 16px 0;
+    padding: 22px;
+    background-color: $black;
+  }
+}
+
+@media (max-width: 699px) {
+  .search-bar {
+    width: 87%;
+  }
+}

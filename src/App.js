@@ -3,36 +3,36 @@ import axios from 'axios';
 
 import { GeoLocationKey } from './api/Key';
 import { Map, Search } from './components/Index';
+import './stylesheets/app.scss';
 
 const App = () => {
+  const [ipInfo, setIpInfo] = useState({
+    ip: '',
+    isp: '',
+    location: {
+      city: '',
+      region: '',
+      timezone: '',
+      lat: '',
+      lng: ''
+    }
+  });
   const [ipAddress, setIpAddress] = useState('');
-  const [location, setLocation] = useState('');
-  const [timeZone, setTimeZone] = useState('');
-  const [ISP, setISP] = useState('');
-  const [lat, setLat] = useState('');
-  const [lng, setLng] = useState('');
 
   useEffect(() => {
     const search = async () => {
-      const {
-        data: {
-          ip,
-          isp,
-          location: { city, region, timezone, lat, lng }
+      const { data } = await axios.get(
+        `https://geo.ipify.org/api/v2/country,city?`,
+        {
+          params: {
+            apiKey: GeoLocationKey,
+            ipAddress: ipAddress
+          }
         }
-      } = await axios.get(`https://geo.ipify.org/api/v2/country,city?`, {
-        params: {
-          apiKey: GeoLocationKey,
-          ipAddress: ipAddress
-        }
-      });
+      );
 
-      setIpAddress(ipAddress !== '' ? ipAddress : ip);
-      setLocation(`${city}, ${region}`);
-      setTimeZone(timezone);
-      setISP(isp);
-      setLat(lat);
-      setLng(lng);
+      setIpInfo(data);
+      setIpAddress(ipAddress !== '' ? ipAddress : data.ip);
     };
 
     search();
@@ -40,14 +40,38 @@ const App = () => {
 
   return (
     <div className="App">
-      <Search action={setIpAddress} ip={ipAddress} />
-      <div>
-        <div>{ipAddress}</div>
-        <div>{location}</div>
-        <div>{timeZone}</div>
-        <div>{ISP}</div>
+      <div className="ip-info">
+        <h1>IP Address Tracker</h1>
+
+        <Search action={setIpAddress} ip={ipAddress} className="search-bar" />
+
+        <div className="details">
+          <div>
+            <h2>Ip Address</h2>
+            <p>{ipAddress}</p>
+          </div>
+
+          <div>
+            <h2>location</h2>
+            <p>{`${ipInfo.location.city}, ${ipInfo.location.region}`}</p>
+          </div>
+
+          <div>
+            <h2>Timezone</h2>
+            <p>{ipInfo.location.timezone}</p>
+          </div>
+
+          <div>
+            <h2>ISP</h2>
+            <p>{ipInfo.isp}</p>
+          </div>
+        </div>
       </div>
-      <Map coordinates={{ lat, lng }} />
+
+      <Map
+        coordinates={{ lat: ipInfo.location.lat, lng: ipInfo.location.lng }}
+        className="map-box"
+      />
     </div>
   );
 };

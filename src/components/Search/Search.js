@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { checkForNumber, ipCheck } from '../../utils/helpers';
 import { arrowIcon } from '../../assets';
+import '../../stylesheets/search.scss';
 
-const Search = ({ action, ip }) => {
+const Search = ({ action, ip, className }) => {
   const [value, setValue] = useState('');
   const [isValid, setIsValid] = useState(true);
 
@@ -14,17 +15,18 @@ const Search = ({ action, ip }) => {
   }, [ip]);
 
   const onInputChange = ({
-    target: { value: eValue },
+    target: { value: elementValue },
     nativeEvent: { data }
   }) => {
     if (typeof data === 'string')
       setValue(checkForNumber(data) === '' ? value : checkForNumber(data));
 
-    if ((0 <= data && data <= 9) || data === '.') setValue(eValue);
+    if ((0 <= data && data <= 9) || data === '.') setValue(elementValue);
   };
 
   const onFormSubmit = e => {
     e.preventDefault();
+
     if (value === '' || ipCheck(value)) {
       setIsValid(true);
       action(value);
@@ -36,10 +38,14 @@ const Search = ({ action, ip }) => {
   return (
     <form
       onSubmit={e => onFormSubmit(e)}
-      className={`search${isValid === false ? ' invalid' : ''}`}
+      className={`${className}${isValid === false ? ' invalid' : ''}`}
     >
-      <input value={value} onChange={e => onInputChange(e)} />
-      <button type="submit">
+      <input
+        value={value}
+        onChange={e => onInputChange(e)}
+        placeholder="Search for any IP address or domain"
+      />
+      <button type="submit" className="submit-button">
         <span>
           <img src={arrowIcon} alt="arrow icon" />
         </span>
