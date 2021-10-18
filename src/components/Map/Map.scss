@@ -1,0 +1,8 @@
+.mapcontainer {
+  height: calc(100vh - 35vh);
+
+  &__icon {
+    outline: none;
+    background: transparent;
+  }
+}

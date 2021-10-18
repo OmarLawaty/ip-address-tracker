@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { checkForNumber } from '../../utils/helpers';
+import { checkForNumber, ipCheck } from '../../utils/helpers';
 import { arrowIcon } from '../../assets';
 
-const Search = ({ action }) => {
+const Search = ({ action, ip }) => {
   const [value, setValue] = useState('');
+  const [isValid, setIsValid] = useState(true);
+
+  useEffect(() => {
+    if (ip !== '') {
+      setValue(ip);
+    }
+  }, [ip]);
 
   const onInputChange = ({
     target: { value: eValue },
@@ -18,11 +25,19 @@ const Search = ({ action }) => {
 
   const onFormSubmit = e => {
     e.preventDefault();
-    action(value);
+    if (value === '' || ipCheck(value)) {
+      setIsValid(true);
+      action(value);
+    } else {
+      setIsValid(false);
+    }
   };
 
   return (
-    <form onSubmit={e => onFormSubmit(e)}>
+    <form
+      onSubmit={e => onFormSubmit(e)}
+      className={`search${isValid === false ? ' invalid' : ''}`}
+    >
       <input value={value} onChange={e => onInputChange(e)} />
       <button type="submit">
         <span>
