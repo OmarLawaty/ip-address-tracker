@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { GeoLocationKey } from './api/Key';
-import { Map, Search } from './components/Index';
+import { Map, Search, IpDetails } from './components/Index';
 import './stylesheets/app.scss';
 
 const App = () => {
@@ -45,27 +45,7 @@ const App = () => {
 
         <Search action={setIpAddress} ip={ipAddress} className="search-bar" />
 
-        <div className="details">
-          <div>
-            <h2>Ip Address</h2>
-            <p>{ipAddress}</p>
-          </div>
-
-          <div>
-            <h2>location</h2>
-            <p>{`${ipInfo.location.city}, ${ipInfo.location.region}`}</p>
-          </div>
-
-          <div>
-            <h2>Timezone</h2>
-            <p>{ipInfo.location.timezone}</p>
-          </div>
-
-          <div>
-            <h2>ISP</h2>
-            <p>{ipInfo.isp}</p>
-          </div>
-        </div>
+        <IpDetails ipInfo={ipInfo} className="ip-details" />
       </div>
 
       <Map

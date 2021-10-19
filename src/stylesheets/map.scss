@@ -1,0 +1,14 @@
+.mapcontainer {
+  height: 65vh;
+
+  &__icon {
+    outline: none;
+    background: transparent;
+  }
+}
+
+@media (max-width: 699px) {
+  .mapcontainer {
+    height: 62.5vh;
+  }
+}

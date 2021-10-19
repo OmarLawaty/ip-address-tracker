@@ -1,1 +1,1 @@
-export const GeoLocationKey = 'at_cJruGUZbTwNWS0kCZ5NS5lmmzplwl';
+export const GeoLocationKey = 'at_SN1zSBdHLzpWyPazOEWQUUn5V7FC3';

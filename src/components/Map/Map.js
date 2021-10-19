@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
 import { locationIcon } from '../../assets/index';
-import './Map.scss';
+import '../../stylesheets/map.scss';
 
-const DisplayMap = ({ coordinates }) => {
+const DisplayMap = ({ coordinates, className }) => {
   const [map, setMap] = useState();
 
   useEffect(() => {
@@ -36,6 +36,7 @@ const DisplayMap = ({ coordinates }) => {
         zoomControl={false}
         zoom={13}
         whenCreated={map => setMap(map)}
+        className={className}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

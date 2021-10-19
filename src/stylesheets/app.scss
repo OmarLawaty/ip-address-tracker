@@ -5,13 +5,13 @@
   flex-direction: column;
 
   .ip-info {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 35vh;
-    background: url('../assets/Search/pattern-bg.png');
+    background: url('../assets/Search/pattern-bg.png') no-repeat;
     background-size: cover;
-    background-repeat: no-repeat;
     gap: 26px;
     padding-top: 29px;
 
@@ -22,22 +22,37 @@
       letter-spacing: -0.4px;
       color: $white;
     }
-
-    .details {
-      position: absolute;
-      left: 0%;
-    }
   }
 }
 
 @media (max-width: 699px) {
   .App {
     .ip-info {
+      min-height: 300px;
+      height: 37.5vh;
       padding-top: 27px;
 
       h1 {
         font-size: 26px;
         letter-spacing: -0.3px;
+      }
+    }
+  }
+}
+
+@media (max-height: 699px) and (min-width: 699px) {
+  .App {
+    .ip-info {
+      padding: 10px;
+      min-height: 190px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: safe center;
+
+      h1 {
+        grid-row: 1/2;
+        margin: auto;
+        font-size: clamp(20px, 12vw, 32px);
       }
     }
   }

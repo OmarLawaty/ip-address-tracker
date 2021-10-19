@@ -43,3 +43,11 @@
     width: 87%;
   }
 }
+
+@media (max-height: 699px) and (min-width: 699px) {
+  .search-bar {
+    grid-row: 2/3;
+    width: clamp(max(100px, 80%), 70%, 1000px);
+    margin: auto;
+  }
+}
