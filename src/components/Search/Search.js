@@ -19,7 +19,7 @@ const Search = ({ action, ip, className }) => {
     if (typeof keyPress === 'string') {
       const checkedNum = checkForNumbers(keyPress);
 
-      setValue(prevValue => (checkedNum === '' ? prevValue : checkedNum));
+      setValue(checkedNum === '' ? value : checkedNum);
     }
 
     if ((0 <= keyPress && keyPress <= 9) || keyPress === '.') {

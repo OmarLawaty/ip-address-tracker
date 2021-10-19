@@ -4,7 +4,7 @@ import L from 'leaflet';
 import { locationIcon } from '../../assets/index';
 import '../../stylesheets/map.scss';
 
-const DisplayMap = ({ coordinates, className }) => {
+const Map = ({ coordinates, className }) => {
   const [map, setMap] = useState();
 
   const latLng = L.latLng(coordinates.lat, coordinates.lng);
@@ -48,4 +48,4 @@ const DisplayMap = ({ coordinates, className }) => {
   );
 };
 
-export default DisplayMap;
+export default Map;
