@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { Map, Search, IPDetails } from './components';
+import IPDetails from './components/IPDetails';
+import Map from './components/Map';
+import Search from './components/Search';
+
 import './stylesheets/app.scss';
 import api from './utils/api';
 
