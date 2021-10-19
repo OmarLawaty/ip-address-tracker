@@ -1,17 +1,25 @@
-# Frontend Mentor - IP address tracker solution
+# IP Address Tracker
 
-This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+![Desktop Preview](./design/desktop-preview.jpg)
+
+This is a solution to the [IP Address Tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
   - [Links](#links)
+- [Getting started](#getting-started)
+  - [GeoIpify API](#geoipify-api)
+    - [How to get key](#how-to-get-key)
+    - [Where to use the key](#where-to-use-the-key)
+  - [Start the project](#start-the-project)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
 - [Author](#author)
+
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -24,38 +32,54 @@ Users should be able to:
 - See their own IP address on the map on the initial page load
 - Search for any IP addresses or domains and see the key information and location
 
-### Screenshot
-
-#### Desktop View
-![Screenshot_2021-05-16 IP Address Tracker(1)](https://user-images.githubusercontent.com/32261562/118389152-1880eb00-b646-11eb-9089-5e3df033b8db.png)
-#### Mobile View
-![Screenshot_2021-05-16 IP Address Tracker(2)](https://user-images.githubusercontent.com/32261562/118389563-22a3e900-b648-11eb-954f-c229345e18cd.png)
-
-
 ### Links
 
-- [Solution URL](https://github.com/pratik-pdw/ip-address-tracker)
-- [Live Site URL](https://ipaddresstracker.pratikwadekar.me)
+- [Solution URL](https://www.frontendmentor.io/solutions/calc-app-Vp4t2S-Yt)
+- [Live Site URL](https://ip-address-tracker-omarlawaty.vercel.app/)
+
+## Getting started
+
+### GeoIpify API
+
+#### How to get key
+
+To use the IP Geolocation API by IPify, you'll need to sign up for a free account. You won't need to add any cards details to do this and it's a very quick process. This will generate an API Key for you. Usually, you would be able to restrict your API Key to a specific URL (your domain). This makes sure that other people can't use your API Key on their websites. IPify doesn't have this feature, but because you aren't adding your card details, this isn't an issue. **So be sure to only sign up for the free account and DO NOT enter any card details**.
+
+#### Where to use the key
+
+To use the Key you got from GeoIpify , Go to [key.js](../src/api/Key.js) and replace the `null` value with the key you just got.
+
+### Start the project
+
+Make sure to have `node.js` and `yarn`installed and that you are in the root directory of the project, then simply run:
+
+```bash
+yarn
+```
+
+To run the development server, execute:
+
+```bash
+yarn start
+```
 
 ## My process
 
-I have used flexbox along with SASS for layout. I have used Netlify's Environment Variables to hide my API Key from the React Code. I have added my twist to the app by also including regex validations for IPv4, IPv6 and Domain Address. Also I have included a animating loader written in CSS that shows up on a ongoing network request.
-
-
 ### Built with
 
-- Semantic HTML5 markup
-- Flexbox
-- React.JS
-- SASS
+- [React](https://reactjs.org/) - JS library
+- [Sass](https://create-react-app.dev/docs/adding-a-sass-stylesheets) - Css library
+- [Leaflet](https://react-leaflet.js.org/) - React maps library
+- [GeoIpify](https://geo.ipify.org/) - IP Location API
 
-### What I learned
+### Useful resources
 
-I am learning to use SASS. For this challenge I tried to decompose my code as much as possible unlike what I do in my other apps. I have used mixins for my responsive media queries.
-
+- [W3schools](w3schools.com/)
+- [stackoverflow](stackoverflow.com/)
+- [MDN Web Docs](https://developer.mozilla.org/en-US/)
 
 ## Author
 
-- Portfolio - [pratikwadekar.me](https://www.pratikwadekar.me)
-- Frontend Mentor - [@pratik-pdw](https://www.frontendmentor.io/profile/pratik-pdw)
-
+- Name - Omar Mohamed
+- Frontend Mentor - [@OmarLawaty](https://www.frontendmentor.io/profile/OmarLawaty)
+- Twitter - [@OmarLawaty](https://twitter.com/OmarLawaty)

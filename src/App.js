@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { GeoLocationKey } from './api/Key';
-import { Map, Search, IpDetails } from './components/Index';
+import { GeoIpifyKey } from './api/Key';
+import { Map, Search, IpDetails } from './components';
 import './stylesheets/app.scss';
 
 const App = () => {
@@ -20,22 +20,24 @@ const App = () => {
   const [ipAddress, setIpAddress] = useState('');
 
   useEffect(() => {
-    const search = async () => {
-      const { data } = await axios.get(
-        `https://geo.ipify.org/api/v2/country,city?`,
-        {
-          params: {
-            apiKey: GeoLocationKey,
-            ipAddress: ipAddress
+    if (GeoIpifyKey) {
+      const search = async () => {
+        const { data } = await axios.get(
+          `https://geo.ipify.org/api/v2/country,city?`,
+          {
+            params: {
+              apiKey: GeoIpifyKey,
+              ipAddress: ipAddress
+            }
           }
-        }
-      );
+        );
 
-      setIpInfo(data);
-      setIpAddress(ipAddress !== '' ? ipAddress : data.ip);
-    };
+        setIpInfo(data);
+        setIpAddress(ipAddress !== '' ? ipAddress : data.ip);
+      };
 
-    search();
+      search();
+    }
   }, [ipAddress]);
 
   return (

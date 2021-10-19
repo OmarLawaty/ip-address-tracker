@@ -2,11 +2,14 @@
 
 .search-bar {
   transition: border 300ms;
+
+  display: flex;
+
   width: max(38.7%, 520px);
   height: 60px;
-  display: flex;
-  border-radius: 16px;
+
   border: 1px solid transparent;
+  border-radius: 16px;
 
   &.invalid {
     border: 1px solid $red;
@@ -18,23 +21,36 @@
 
   input {
     transition: color 300ms;
-    width: 90%;
+
+    width: 100%;
     height: 100%;
-    border-radius: 16px 0 0 16px;
-    border: 1px solid transparent;
     padding: 25px;
+
     font: inherit;
     font-size: 18px;
     color: $black;
+
+    border: 1px solid transparent;
+    border-radius: 16px 0 0 16px;
+
+    cursor: pointer;
   }
 
   .submit-button {
+    transition: background-color 300ms;
+
     width: 58px;
     height: 58px;
+    padding: 22px;
+
+    background-color: $black;
+
     border: 1px solid transparent;
     border-radius: 0 16px 16px 0;
-    padding: 22px;
-    background-color: $black;
+
+    &:hover {
+      background-color: $very-dark-gray;
+    }
   }
 }
 
@@ -47,6 +63,7 @@
 @media (max-height: 699px) and (min-width: 699px) {
   .search-bar {
     grid-row: 2/3;
+
     width: clamp(max(100px, 80%), 70%, 1000px);
     margin: auto;
   }

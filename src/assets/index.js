@@ -1,2 +1,2 @@
-export * from './Search/Index';
-export * from './Map/Index';
+export * from './Search';
+export * from './Map';

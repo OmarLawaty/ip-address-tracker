@@ -7,6 +7,19 @@ import '../../stylesheets/map.scss';
 const DisplayMap = ({ coordinates, className }) => {
   const [map, setMap] = useState();
 
+  const latLng = L.latLng(coordinates.lat, coordinates.lng);
+  const icon = L.icon({
+    iconUrl: locationIcon,
+    iconRetinaUrl: locationIcon,
+    iconAnchor: null,
+    popupAnchor: null,
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
+    iconSize: [40, 50],
+    className: 'mapcontainer__icon'
+  });
+
   useEffect(() => {
     if (map)
       map.flyTo([coordinates.lat, coordinates.lng], 17, {
@@ -14,19 +27,6 @@ const DisplayMap = ({ coordinates, className }) => {
         duration: 2
       });
   }, [map, coordinates]);
-
-  const icon = L.icon({
-      iconUrl: locationIcon,
-      iconRetinaUrl: locationIcon,
-      iconAnchor: null,
-      popupAnchor: null,
-      shadowUrl: null,
-      shadowSize: null,
-      shadowAnchor: null,
-      iconSize: [40, 50],
-      className: 'mapcontainer__icon'
-    }),
-    latLng = L.latLng(coordinates.lat, coordinates.lng);
 
   return (
     <div className="mapcontainer">
