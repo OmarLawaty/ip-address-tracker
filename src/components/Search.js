@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { checkForNumbers, ipCheck } from '../../utils/helpers';
-import { arrowIcon } from '../../assets';
-import '../../stylesheets/search.scss';
+import { checkForNumbers, ipCheck } from '../utils/helpers';
+import { arrowIcon } from '../assets';
+import '../stylesheets/Search.scss';
 
 const Search = ({ action, ip, className }) => {
   const [value, setValue] = useState('');

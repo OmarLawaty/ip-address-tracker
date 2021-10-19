@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
-import { GeoIpifyKey } from './api/Key';
-import { Map, Search, IpDetails } from '../src/components/index.js';
-import './stylesheets/app.scss';
+import { Map, Search, IPDetails } from './components';
+import './stylesheets/App.scss';
+import api from './utils/api';
 
 const App = () => {
-  const [ipInfo, setIpInfo] = useState({
+  const [ipInfo, setIPInfo] = useState({
     ip: '',
     isp: '',
     location: {
@@ -17,27 +16,21 @@ const App = () => {
       lng: ''
     }
   });
-  const [ipAddress, setIpAddress] = useState('');
+  const [ipAddress, setIPAddress] = useState('');
 
   useEffect(() => {
-    if (GeoIpifyKey) {
-      const search = async () => {
-        const { data } = await axios.get(
-          `https://geo.ipify.org/api/v2/country,city?`,
-          {
-            params: {
-              apiKey: GeoIpifyKey,
-              ipAddress: ipAddress
-            }
-          }
-        );
+    const search = async () => {
+      const { data } = await api.get(`api/v2/country,city?`, {
+        params: {
+          ipAddress: ipAddress
+        }
+      });
 
-        setIpInfo(data);
-        setIpAddress(ipAddress !== '' ? ipAddress : data.ip);
-      };
+      setIPInfo(data);
+      setIPAddress(ipAddress !== '' ? ipAddress : data.ip);
+    };
 
-      search();
-    }
+    search();
   }, [ipAddress]);
 
   return (
@@ -45,9 +38,9 @@ const App = () => {
       <div className="ip-info">
         <h1>IP Address Tracker</h1>
 
-        <Search action={setIpAddress} ip={ipAddress} className="search-bar" />
+        <Search action={setIPAddress} ip={ipAddress} className="search-bar" />
 
-        <IpDetails ipInfo={ipInfo} className="ip-details" />
+        <IPDetails ipInfo={ipInfo} className="ip-details" />
       </div>
 
       <Map

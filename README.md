@@ -10,7 +10,7 @@ This is a solution to the [IP Address Tracker challenge on Frontend Mentor](http
   - [The challenge](#the-challenge)
   - [Links](#links)
 - [Getting started](#getting-started)
-  - [GeoIpify API](#geoipify-api)
+  - [GeoIPify API](#geoipify-api)
     - [How to get key](#how-to-get-key)
     - [Where to use the key](#where-to-use-the-key)
   - [Start the project](#start-the-project)
@@ -39,7 +39,7 @@ Users should be able to:
 
 ## Getting started
 
-### GeoIpify API
+### GeoIPify API
 
 #### How to get key
 
@@ -47,7 +47,7 @@ To use the IP Geolocation API by IPify, you'll need to sign up for a free accoun
 
 #### Where to use the key
 
-To use the Key you got from GeoIpify , Go to [key.js](./src/api/Key.js) and replace the `null` value with the key you just got.
+To use the Key you got from GeoIPify , Go to the [src directory](../src) and create .env File and store your key in `BD_KEY="YOURKEY"`
 
 ### Start the project
 
@@ -70,7 +70,7 @@ yarn start
 - [React](https://reactjs.org/) - JS library
 - [Sass](https://create-react-app.dev/docs/adding-a-sass-stylesheets) - Css library
 - [Leaflet](https://react-leaflet.js.org/) - React maps library
-- [GeoIpify](https://geo.ipify.org/) - IP Location API
+- [GeoIPify](https://geo.ipify.org/) - IP Location API
 
 ### Useful resources
 

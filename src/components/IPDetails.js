@@ -1,11 +1,11 @@
 import React from 'react';
 
-import '../../stylesheets/ipDetails.scss';
+import '../stylesheets/IPDetails.scss';
 
-const IpDetails = ({ ipInfo: { ip, isp, location }, className }) => (
+const IPDetails = ({ ipInfo: { ip, isp, location }, className }) => (
   <div className={className}>
     <div className="ip-detail">
-      <h2>Ip Address</h2>
+      <h2>IP Address</h2>
       <p>{ip}</p>
     </div>
 
@@ -26,4 +26,4 @@ const IpDetails = ({ ipInfo: { ip, isp, location }, className }) => (
   </div>
 );
 
-export default IpDetails;
+export default IPDetails;
