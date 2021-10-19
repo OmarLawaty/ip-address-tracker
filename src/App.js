@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Map, Search, IPDetails } from './components';
-import './stylesheets/App.scss';
+import './stylesheets/app.scss';
 import api from './utils/api';
 
 const App = () => {
