@@ -47,7 +47,7 @@ To use the IP Geolocation API by IPify, you'll need to sign up for a free accoun
 
 #### Where to use the key
 
-To use the Key you got from GeoIpify , Go to [key.js](../src/api/Key.js) and replace the `null` value with the key you just got.
+To use the Key you got from GeoIpify , Go to [key.js](./src/api/Key.js) and replace the `null` value with the key you just got.
 
 ### Start the project
 
