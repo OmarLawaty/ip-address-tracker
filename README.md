@@ -34,7 +34,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL](https://www.frontendmentor.io/solutions/calc-app-Vp4t2S-Yt)
+- [Solution URL](https://www.frontendmentor.io/solutions/ip-address-tracker-quPyKaGQo)
 - [Live Site URL](https://ip-address-tracker-omarlawaty.vercel.app/)
 
 ## Getting started
