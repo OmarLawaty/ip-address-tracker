@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { GeoIpifyKey } from './api/Key';
-import { Map, Search, IpDetails } from './components/index';
+import { Map, Search, IpDetails } from './components/index.js';
 import './stylesheets/app.scss';
 
 const App = () => {
