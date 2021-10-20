@@ -47,7 +47,7 @@ To use the IP Geolocation API by IPify, you'll need to sign up for a free accoun
 
 #### Where to use the key
 
-To use the Key you got from GeoIPify , Go to the [src directory](../src) and create .env File and store your key in `BD_KEY="YOURKEY"`
+To use the Key you got from GeoIPify , Go to the [src directory](../src) and create .env File and store your key in `REACT_APP_KEY=YOUR KEY HERE`
 
 ### Start the project
 
