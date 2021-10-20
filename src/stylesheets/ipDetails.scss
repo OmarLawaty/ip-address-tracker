@@ -3,17 +3,13 @@
 .ip-details {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-
   position: absolute;
   top: calc(100% - 80px);
   z-index: 401;
-
   width: 77%;
   min-height: 161px;
   padding: 36px 0;
-
   background: white;
-
   border-radius: 14px;
 
   .ip-detail {
@@ -59,7 +55,7 @@
   }
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1100px) {
   .ip-details {
     grid-template-columns: 1fr;
     grid-gap: 23.5px;
@@ -67,12 +63,16 @@
     top: calc(100% - 134px);
 
     width: clamp(87.5vw, 60%, 1000px);
-    padding: 27px 0;
+    padding: 27px 15px;
 
     text-align: center;
 
     .ip-detail {
       grid-gap: 7px;
+
+      &:not(&:nth-child(1))::after {
+        content: unset;
+      }
 
       h2 {
         font-size: 10px;
@@ -90,35 +90,6 @@
         margin: 0;
 
         text-align: center;
-      }
-    }
-  }
-}
-
-@media (max-height: 699px) and (min-width: 699px) {
-  .ip-details {
-    grid-template-rows: repeat(auto-fit, minmax(20px, 0.4fr));
-    grid-row: 1/3;
-    grid-gap: 5px;
-
-    position: static;
-
-    min-width: 360px;
-    max-width: 47vw;
-    padding: 15px 0;
-
-    .ip-detail {
-      gap: 5px;
-
-      p {
-        overflow: hidden;
-        text-overflow: ellipsis;
-
-        height: 30px;
-      }
-
-      &:not(&:nth-child(1))::after {
-        content: unset;
       }
     }
   }

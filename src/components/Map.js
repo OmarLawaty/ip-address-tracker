@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
-import { locationIcon } from '../assets/index';
-import '../stylesheets/Map.scss';
+import { locationIcon } from '../assets';
+import '../stylesheets/map.scss';
 
 const Map = ({ coordinates, className }) => {
   const [map, setMap] = useState();

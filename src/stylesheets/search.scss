@@ -2,12 +2,9 @@
 
 .search-bar {
   transition: border 300ms;
-
   display: flex;
-
   width: max(38.7%, 520px);
   height: 60px;
-
   border: 1px solid transparent;
   border-radius: 16px;
 
@@ -54,17 +51,8 @@
   }
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1100px) {
   .search-bar {
     width: 87%;
-  }
-}
-
-@media (max-height: 699px) and (min-width: 699px) {
-  .search-bar {
-    grid-row: 2/3;
-
-    width: clamp(max(100px, 80%), 70%, 1000px);
-    margin: auto;
   }
 }

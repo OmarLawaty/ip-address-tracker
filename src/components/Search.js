@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { checkForNumbers, ipCheck } from '../utils/helpers';
 import { arrowIcon } from '../assets';
-import '../stylesheets/Search.scss';
+import '../stylesheets/search.scss';
 
 const Search = ({ action, ip, className }) => {
   const [value, setValue] = useState('');
@@ -33,7 +33,7 @@ const Search = ({ action, ip, className }) => {
     if (value === '' || ipCheck(value)) {
       setIsValid(true);
 
-      action(prevValue => prevValue);
+      action(value);
     } else {
       setIsValid(false);
     }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import '../stylesheets/IPDetails.scss';
+import '../stylesheets/ipDetails.scss';
 
-const IPDetails = ({ ipInfo: { ip, isp, location }, className }) => (
+const IPDetails = ({ ipInfo: { ip, isp, locationInfo }, className }) => (
   <div className={className}>
     <div className="ip-detail">
       <h2>IP Address</h2>
@@ -11,12 +11,12 @@ const IPDetails = ({ ipInfo: { ip, isp, location }, className }) => (
 
     <div className="ip-detail">
       <h2>location</h2>
-      <p>{`${location.city}, ${location.region}`}</p>
+      <p>{locationInfo.location}</p>
     </div>
 
     <div className="ip-detail">
       <h2>Timezone</h2>
-      <p>{`UTC ${location.timezone}`}</p>
+      <p>{locationInfo.UTCTimezone}</p>
     </div>
 
     <div className="ip-detail">

@@ -1,53 +1,75 @@
 import { useEffect, useState } from 'react';
 
-import IPDetails from './components/IPDetails';
-import Map from './components/Map';
-import Search from './components/Search';
-
+import { Search, IPDetails, Map, Err, Loader } from './components';
 import './stylesheets/app.scss';
 import api from './utils/api';
 
 const App = () => {
   const [ipInfo, setIPInfo] = useState({
-    ip: '',
-    isp: '',
-    location: {
-      city: '',
-      region: '',
-      timezone: '',
+    ip: 'Loading...',
+    isp: 'Loading...',
+    locationInfo: {
+      location: 'Loading...',
+      UTCTimezone: 'Loading...',
       lat: '',
       lng: ''
     }
   });
-  const [ipAddress, setIPAddress] = useState('');
+  const [IPAddress, setIPAddress] = useState('');
+  const [apiErr, setApiErr] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const search = async () => {
-      const { data } = await api.get(`api/v2/country,city?`, {
+    api
+      .get(`api/v2/country,city?`, {
         params: {
-          ipAddress: ipAddress
+          ipAddress: IPAddress
         }
+      })
+      .then(
+        ({
+          data: {
+            ip,
+            isp,
+            location: { city, region, timezone, lat, lng }
+          }
+        }) => {
+          setIPInfo({
+            ip,
+            isp,
+            locationInfo: {
+              location: `${region}, ${city}`,
+              UTCTimezone: `UTC ${timezone}`,
+              lat,
+              lng
+            }
+          });
+          setIPAddress(pervValue => (pervValue !== '' ? pervValue : ip));
+          setIsLoading(false);
+        }
+      )
+      .catch(error => {
+        if (error.response) setApiErr(error.response.data);
       });
-
-      setIPInfo(data);
-      setIPAddress(ipAddress !== '' ? ipAddress : data.ip);
-    };
-
-    search();
-  }, [ipAddress]);
+  }, [IPAddress]);
 
   return (
     <div className="App">
+      {isLoading && <Loader />}
+      {apiErr && <Err setApiErr={setApiErr} apiErr={apiErr} />}
       <div className="ip-info">
         <h1>IP Address Tracker</h1>
 
-        <Search action={setIPAddress} ip={ipAddress} className="search-bar" />
+        <Search action={setIPAddress} ip={IPAddress} className="search-bar" />
 
         <IPDetails ipInfo={ipInfo} className="ip-details" />
       </div>
 
       <Map
-        coordinates={{ lat: ipInfo.location.lat, lng: ipInfo.location.lng }}
+        coordinates={{
+          lat: ipInfo.locationInfo.lat,
+          lng: ipInfo.locationInfo.lng
+        }}
         className="map-box"
       />
     </div>
