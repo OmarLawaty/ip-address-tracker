@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Search, IPDetails, Map, Err, Loader } from './components';
 import './stylesheets/app.scss';
-import api from './utils/api';
+import GeoIPFiyapi from './utils/api';
 
 const App = () => {
   const [ipInfo, setIPInfo] = useState({
@@ -20,37 +20,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    api
-      .get(`api/v2/country,city?`, {
-        params: {
-          ipAddress: IPAddress
-        }
-      })
-      .then(
-        ({
-          data: {
-            ip,
-            isp,
-            location: { city, region, timezone, lat, lng }
-          }
-        }) => {
-          setIPInfo({
-            ip,
-            isp,
-            locationInfo: {
-              location: `${region}, ${city}`,
-              UTCTimezone: `UTC ${timezone}`,
-              lat,
-              lng
-            }
-          });
-          setIPAddress(pervValue => (pervValue !== '' ? pervValue : ip));
-          setIsLoading(false);
-        }
-      )
-      .catch(error => {
-        if (error.response) setApiErr(error.response.data);
-      });
+    GeoIPFiyapi(setIPInfo, IPAddress, setIPAddress, setIsLoading, setApiErr);
   }, [IPAddress]);
 
   return (
