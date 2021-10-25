@@ -10,6 +10,8 @@ const Map = ({ coordinates, className }) => {
   const [map, setMap] = useState();
 
   const latLng = L.latLng(coordinates.lat, coordinates.lng);
+
+  // Prevent default marker styles
   const icon = L.icon({
     iconUrl: locationIcon,
     iconRetinaUrl: locationIcon,

@@ -9,8 +9,12 @@ const GeoIPFiyApi = (
 ) => {
   axios
     .get(`https://geo.ipify.org/api/v2/country,city?`, {
-      params: { apiKey: process.env.REACT_APP_KEY, ipAddress: IPAddress }
+      params: {
+        apiKey: process.env.REACT_APP_KEY,
+        ipAddress: IPAddress
+      }
     })
+
     .then(
       ({
         data: {
@@ -19,6 +23,7 @@ const GeoIPFiyApi = (
           location: { city, region, timezone, lat, lng }
         }
       }) => {
+        // Set IP values
         setIPInfo({
           ip,
           isp,
@@ -30,10 +35,13 @@ const GeoIPFiyApi = (
           }
         });
         setIPAddress(pervValue => (pervValue !== '' ? pervValue : ip));
+
+        // Stop the loading component
         setIsLoading(false);
       }
     )
     .catch(error => {
+      // Activate err message
       if (error.response) setApiErr(error.response.data);
     });
 };
