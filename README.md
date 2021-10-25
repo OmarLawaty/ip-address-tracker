@@ -47,20 +47,20 @@ To use the IP Geolocation API by IPify, you'll need to sign up for a free accoun
 
 #### Where to use the key
 
-To use the Key you got from GeoIPify , Go to the [src directory](../src) and create .env File and store your key in `BD_KEY="YOURKEY"`
+To use the Key you got from GeoIPify , Go to the [src directory](../src) and create .env File and store your key in `REACT_APP_KEY=YOUR KEY HERE`
 
 ### Start the project
 
-Make sure to have `node.js` and `yarn`installed and that you are in the root directory of the project, then simply run:
+Make sure to have `node.js` and `npm`installed and that you are in the root directory of the project, then simply run:
 
 ```bash
-yarn
+npm install
 ```
 
 To run the development server, execute:
 
 ```bash
-yarn start
+npm start
 ```
 
 ## My process
