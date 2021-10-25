@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const GeoIPFiyapi = (
+const GeoIPFiyApi = (
   setIPInfo,
   IPAddress,
   setIPAddress,
@@ -38,4 +38,4 @@ const GeoIPFiyapi = (
     });
 };
 
-export default GeoIPFiyapi;
+export default GeoIPFiyApi;

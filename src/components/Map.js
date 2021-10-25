@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
+
 import { locationIcon } from '../assets';
+
 import '../stylesheets/map.scss';
 
 const Map = ({ coordinates, className }) => {
@@ -17,7 +19,7 @@ const Map = ({ coordinates, className }) => {
     shadowSize: null,
     shadowAnchor: null,
     iconSize: [40, 50],
-    className: 'mapcontainer__icon'
+    className: 'map-container__icon'
   });
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const Map = ({ coordinates, className }) => {
   }, [map, coordinates]);
 
   return (
-    <div className="mapcontainer">
+    <div className="map-container">
       <MapContainer
         style={{ width: '100%', height: '100%' }}
         center={latLng}
@@ -42,7 +44,7 @@ const Map = ({ coordinates, className }) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker icon={icon} position={latLng}></Marker>
+        <Marker icon={icon} position={latLng} />
       </MapContainer>
     </div>
   );

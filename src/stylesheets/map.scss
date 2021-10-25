@@ -1,4 +1,4 @@
-.mapcontainer {
+.map-container {
   height: 65vh;
 
   &__icon {
@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 1280px) {
-  .mapcontainer {
+  .map-container {
     height: 62.5vh;
   }
 }

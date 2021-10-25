@@ -4,13 +4,7 @@ export const ipCheck = isIP => {
   return reg.test(isIP);
 };
 
-export const checkForNumbers = str => {
-  str = [...str];
-
-  return str
-    .map(item => {
-      if (!isNaN(Number(item)) || item === '.') return item;
-      return '';
-    })
+export const checkForNumbers = str =>
+  [...str]
+    .map(item => (!isNaN(Number(item)) || item === '.' ? item : ''))
     .join('');
-};

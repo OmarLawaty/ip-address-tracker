@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import { Search, IPDetails, Map, Err, Loader } from './components';
+import GeoIPFiyApi from './utils/api';
+
 import './stylesheets/app.scss';
-import GeoIPFiyapi from './utils/api';
 
 const App = () => {
   const [ipInfo, setIPInfo] = useState({
@@ -20,13 +21,13 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    GeoIPFiyapi(setIPInfo, IPAddress, setIPAddress, setIsLoading, setApiErr);
+    GeoIPFiyApi(setIPInfo, IPAddress, setIPAddress, setIsLoading, setApiErr);
   }, [IPAddress]);
 
   return (
     <div className="App">
       {isLoading && <Loader />}
-      {apiErr && <Err setApiErr={setApiErr} apiErr={apiErr} />}
+      {apiErr && <Err apiErr={apiErr} />}
       <div className="ip-info">
         <h1>IP Address Tracker</h1>
 

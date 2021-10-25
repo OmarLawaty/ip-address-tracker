@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { checkForNumbers, ipCheck } from '../utils/helpers';
 import { arrowIcon } from '../assets';
+
 import '../stylesheets/search.scss';
 
 const Search = ({ action, ip, className }) => {
