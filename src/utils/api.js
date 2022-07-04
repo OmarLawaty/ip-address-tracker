@@ -4,9 +4,6 @@ const GeoIPFiyApi = (setIPInfo, IPAddress, setIPAddress, setIsLoading, setApiErr
   axios
     .get(`https://ipwho.is/${IPAddress}`)
     .then(({ data }) => {
-      console.log(IPAddress);
-      console.log(data);
-
       if (data.success) {
         // Set IP values
         setIPInfo({
