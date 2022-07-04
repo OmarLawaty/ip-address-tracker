@@ -26,9 +26,9 @@ const Map = ({ coordinates, className }) => {
 
   useEffect(() => {
     if (map)
-      map.flyTo([coordinates.lat, coordinates.lng], 17, {
+      map.flyTo([coordinates.lat, coordinates.lng], 16, {
         animate: true,
-        duration: 2
+        duration: 1.5
       });
   }, [map, coordinates]);
 

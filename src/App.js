@@ -17,7 +17,7 @@ const App = () => {
     }
   });
   const [IPAddress, setIPAddress] = useState('');
-  const [apiErr, setApiErr] = useState(false);
+  const [apiErr, setApiErr] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -36,13 +36,15 @@ const App = () => {
         <IPDetails ipInfo={ipInfo} className="ip-details" />
       </div>
 
-      <Map
-        coordinates={{
-          lat: ipInfo.locationInfo.lat,
-          lng: ipInfo.locationInfo.lng
-        }}
-        className="map-box"
-      />
+      {!apiErr ? (
+        <Map
+          coordinates={{
+            lat: ipInfo.locationInfo.lat,
+            lng: ipInfo.locationInfo.lng
+          }}
+          className="map-box"
+        />
+      ) : null}
     </div>
   );
 };

@@ -1,40 +1,44 @@
 import axios from 'axios';
 
-const GeoIPFiyApi = (
-  setIPInfo,
-  IPAddress,
-  setIPAddress,
-  setIsLoading,
-  setApiErr
-) => {
+const GeoIPFiyApi = (setIPInfo, IPAddress, setIPAddress, setIsLoading, setApiErr) => {
   axios
-    .get(`https://geo.ipify.org/api/v2/country,city?`, {
-      params: {
-        apiKey: process.env.REACT_APP_KEY,
-        ipAddress: IPAddress
-      }
-    })
-
+    .get(`http://ip-api.com/json/${IPAddress}`)
     .then(
       ({
-        data: {
-          ip,
-          isp,
-          location: { city, region, timezone, lat, lng }
-        }
+        data
+        // : { query: ip, isp, country, city, timezone, lat, lon }
       }) => {
-        // Set IP values
-        setIPInfo({
-          ip,
-          isp,
-          locationInfo: {
-            location: `${region}, ${city}`,
-            UTCTimezone: `UTC ${timezone}`,
-            lat,
-            lng
-          }
-        });
-        setIPAddress(pervValue => (pervValue !== '' ? pervValue : ip));
+        console.log(data);
+
+        if (data.status === 'success') {
+          // Set IP values
+          setIPInfo({
+            ip: data.query,
+            isp: data.isp,
+            locationInfo: {
+              location: `${data.country}, ${data.city}`,
+              UTCTimezone: `${data.timezone}`,
+              lat: data.lat,
+              lng: data.lon
+            }
+          });
+          setIPAddress(pervValue => (pervValue !== '' ? pervValue : data.query));
+        }
+
+        if (data.status === 'fail') {
+          // Set IP values
+          setIPInfo({
+            ip: IPAddress,
+            isp: 'unknown',
+            locationInfo: {
+              location: 'unknown',
+              UTCTimezone: 'unknown',
+              lat: 0,
+              lng: 0
+            }
+          });
+          setIPAddress(pervValue => (pervValue !== '' ? pervValue : data.query));
+        }
 
         // Stop the loading component
         setIsLoading(false);
